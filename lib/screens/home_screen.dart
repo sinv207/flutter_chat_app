@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/widgets/category_selector.dart';
-import 'package:flutter_chat_ui/widgets/favorite_contacts.dart';
-import 'package:flutter_chat_ui/widgets/recent_chats.dart';
+import 'package:flutter_chat_app/widgets/category_selector.dart';
+import 'package:flutter_chat_app/widgets/favorite_contacts.dart';
+import 'package:flutter_chat_app/widgets/recent_chats.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
