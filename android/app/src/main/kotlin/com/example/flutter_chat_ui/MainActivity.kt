@@ -1,4 +1,4 @@
-package com.example.flutter_chat_app
+package com.thequeue.chatapp
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity
