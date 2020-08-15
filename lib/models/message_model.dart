@@ -2,8 +2,9 @@ import 'package:flutter_chat_app/models/user_model.dart';
 
 class Message {
   final User sender;
-  final String
-      time; // Would usually be type DateTime or Firebase Timestamp in production apps
+  // Would usually be type DateTime or Firebase Timestamp in production apps
+  final String time;
+  // final String lastOnline;
   final String text;
   final bool isLiked;
   final bool unread;
@@ -63,6 +64,18 @@ final User steven = User(
 
 // FAVORITE CONTACTS
 List<User> favorites = [sam, steven, olivia, john, greg];
+
+// User list
+List<User> users = [
+  currentUser,
+  greg,
+  james,
+  john,
+  olivia,
+  sam,
+  sophia,
+  steven
+];
 
 // EXAMPLE CHATS ON HOME SCREEN
 List<Message> chats = [

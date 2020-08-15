@@ -37,7 +37,8 @@ class _MessageListState extends State<MessageList> {
                   itemCount: qMessages.length,
                   itemBuilder: (BuildContext context, int index) {
                     final Message message = qMessages[index];
-                    final bool isMe = message.sender.id == currentUser.id;
+                    final bool isMe =
+                        index % 3 == 0 || message.sender.id == currentUser.id;
                     return MessageItem(message: message, isMe: isMe);
                   },
                 ),

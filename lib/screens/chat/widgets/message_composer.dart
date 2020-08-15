@@ -22,7 +22,7 @@ class _MessageComposerState extends State<MessageComposer> {
       }
 
       // create a new document for new message from current user
-      return await DatabaseService().sendMessage(currentUser, text);
+      return await DatabaseService().sendMessage(text);
     } catch (error) {
       print(error.toString());
       return null;
@@ -49,6 +49,10 @@ class _MessageComposerState extends State<MessageComposer> {
               textCapitalization: TextCapitalization.sentences,
               onChanged: (value) {
                 setState(() => text = value);
+              },
+              onSubmitted: (value) {
+                send();
+                textController.clear();
               },
               decoration: InputDecoration.collapsed(
                 hintText: 'Send a message...',

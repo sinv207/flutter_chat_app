@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/models/message_model.dart';
 
+import 'package:flutter_chat_app/shared/utils.dart';
+
 class MessageItem extends StatelessWidget {
   final Message message;
   final bool isMe;
@@ -14,38 +16,33 @@ class MessageItem extends StatelessWidget {
           ? EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
-              left: 80.0,
+              left: 72.0,
+              right: 8.0,
             )
           : EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
             ),
-      padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-      width: MediaQuery.of(context).size.width * 0.75,
+      padding: EdgeInsets.fromLTRB(25.0, 15.0, 20.0, 8.0),
+      width: MediaQuery.of(context).size.width * 0.70,
       decoration: BoxDecoration(
         color: isMe ? Theme.of(context).accentColor : Color(0xFFFFEFEE),
         borderRadius: isMe
             ? BorderRadius.only(
-                topLeft: Radius.circular(15.0),
-                bottomLeft: Radius.circular(15.0),
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+                bottomLeft: Radius.circular(20.0),
               )
             : BorderRadius.only(
-                topRight: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+                bottomRight: Radius.circular(20.0),
               ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(
-            message.time,
-            style: TextStyle(
-              color: Colors.blueGrey,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          SizedBox(height: 8.0),
           Text(
             message.text,
             style: TextStyle(
@@ -54,6 +51,20 @@ class MessageItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
+          SizedBox(height: 8.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                Utils.formatDateTime(message.time, 'hh:mm aa'),
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -61,7 +72,18 @@ class MessageItem extends StatelessWidget {
       return msg;
     }
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
+        // SizedBox(width: 5.0),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: CircleAvatar(
+            radius: 18.0,
+            backgroundImage: AssetImage(message.sender.imageUrl),
+          ),
+        ),
+        // SizedBox(width: 5.0),
         msg,
         IconButton(
           icon: message.isLiked
