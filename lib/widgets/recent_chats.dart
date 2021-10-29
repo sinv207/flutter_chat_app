@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/models/message_model.dart';
 import 'package:flutter_chat_app/screens/chat/chat_screen.dart';
 
-class RecentChats extends StatelessWidget {
+class RecentChats extends StatefulWidget {
+  @override
+  _RecentChatsState createState() => _RecentChatsState();
+}
+
+class _RecentChatsState extends State<RecentChats> {
+
   @override
   Widget build(BuildContext context) {
     return Expanded(

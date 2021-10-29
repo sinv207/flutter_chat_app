@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_chat_app/models/message_model.dart';
 import 'package:flutter_chat_app/screens/chat/widgets/message_item.dart';
 import 'package:flutter_chat_app/screens/chat/widgets/message_composer.dart';
+import 'package:flutter_chat_app/shared/performance.dart';
 
 class MessageList extends StatefulWidget {
   @override
@@ -12,7 +13,11 @@ class MessageList extends StatefulWidget {
 class _MessageListState extends State<MessageList> {
   @override
   Widget build(BuildContext context) {
-    final qMessages = Provider.of<List<Message>>(context) ?? messages;
+    final qMessages = Provider.of<List<Message>>(context); // ?? messages;
+    Performance().timeEnd('test1');
+    if (qMessages != null) {
+      print(qMessages.length);
+    }
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Column(
@@ -34,7 +39,7 @@ class _MessageListState extends State<MessageList> {
                 child: ListView.builder(
                   reverse: true,
                   padding: EdgeInsets.only(top: 15.0),
-                  itemCount: qMessages.length,
+                  itemCount: qMessages != null ? qMessages.length : 0,
                   itemBuilder: (BuildContext context, int index) {
                     final Message message = qMessages[index];
                     final bool isMe =

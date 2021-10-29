@@ -4,6 +4,7 @@ import 'package:flutter_chat_app/models/message_model.dart';
 import 'package:flutter_chat_app/models/user_model.dart';
 import 'package:flutter_chat_app/services/database.dart';
 import 'package:flutter_chat_app/screens/chat/widgets/message_list.dart';
+import 'package:flutter_chat_app/shared/performance.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
